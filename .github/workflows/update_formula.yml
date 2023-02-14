@@ -1,0 +1,33 @@
+name: update
+on:
+  schedule:
+    - cron: "0 0 1 * *"  # At 00:00 on day-of-month 1
+  workflow_dispatch:
+
+# ref: https://github.com/Songmu/homebrew-tap/blob/main/.github/workflows/update.yml
+
+jobs:
+  test:
+    name: update
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Install maltmill
+        run: |
+          brew install Songmu/tap/maltmill
+      - name: update & pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          maltmill -w Formula/*.rb Casks/*.rb
+          git diff --exit-code --quiet && exit
+          git add *.rb
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git commit -m 'chore: update to newer version'
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: Regular Update
