@@ -5,7 +5,7 @@ class Xmas < Formula
   version "0.0.5"
   sha256 "81f4b400c2dc710e10088dc2d79a1b7095a52ab0064726f30060e8aa94e9c2ae"
   license "MIT"
-  head "https://github.com/eggplants/sh-xmas.git", branch: "master"
+  head "https://github.com/eggplants/sh-xmas.git"
 
   livecheck do
     url :stable
