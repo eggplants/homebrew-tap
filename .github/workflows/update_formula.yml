@@ -23,6 +23,6 @@ jobs:
           git commit -m 'chore: update to newer version'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: peter-evans/create-pull-request@v4
+      - uses: peter-evans/create-pull-request@v5
         with:
           title: Regular Update
