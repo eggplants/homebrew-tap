@@ -1,9 +1,6 @@
 name: test
 on: push
 
-# ref: https://github.com/Songmu/homebrew-tap/blob/main/.github/workflows/test.yml
-# ref: https://github.com/graalvm/homebrew-tap/blob/master/.github/workflows/main.yml
-
 jobs:
   test:
     name: test
@@ -15,7 +12,7 @@ jobs:
     - run: |
         for i in Casks/*.rb; do
           echo "===${i}==="
-          brew install --HEAD "${{ github.repository }}/$(basename ${i%.rb})" --cask
+          brew install --HEAD "${{ github.repository }}/$(basename ${i%.rb})"
         done
     - run: |
         for i in Formula/*.rb; do
