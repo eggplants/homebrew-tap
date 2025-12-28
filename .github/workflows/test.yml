@@ -15,10 +15,10 @@ jobs:
     - run: |
         for i in Casks/*.rb; do
           echo "===${i}==="
-          brew reinstall --cask --require-sha "$i"
+          brew install --HEAD "${{ github.repository }}/$(basename ${i%.rb})" --cask
         done
     - run: |
         for i in Formula/*.rb; do
           echo "===${i}==="
-          brew reinstall --require-sha "$i"
+          brew install --HEAD "${{ github.repository }}/$(basename ${i%.rb})"
         done
