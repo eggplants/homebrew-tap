@@ -12,7 +12,7 @@ jobs:
     - run: |
         for i in Casks/*.rb; do
           echo "===${i}==="
-          brew install --HEAD "${{ github.repository }}/$(basename ${i%.rb})"
+          brew install --HEAD "${{ github.repository }}/Casks/$(basename ${i%.rb})"
         done
     - run: |
         for i in Formula/*.rb; do
