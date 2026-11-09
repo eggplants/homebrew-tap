@@ -13,6 +13,8 @@ cask "mario-vs-luigi" do
     strategy :github_latest
   end
 
+  depends_on :macos
+
   app "MarioVsLuigi-MacOS.app"
 
   zap trash: "~/Library/Application Support/MarioVsLuigi-MacOS*"
